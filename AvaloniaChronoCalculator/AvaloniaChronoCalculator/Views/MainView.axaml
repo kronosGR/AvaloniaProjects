@@ -1,0 +1,97 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:m="using:AvaloniaChronoCalculator.Models"
+             xmlns:vm="using:AvaloniaChronoCalculator.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaChronoCalculator.Views.MainView"
+             x:DataType="vm:MainWindowViewModel"
+             Background="#1E1E2C"  Padding="20">
+    
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" x:Name="Root">
+
+        <TextBlock Text="{Binding TotalTimeDisplay}" 
+                   FontSize="48" 
+                   Foreground="#62FFC2"  
+                   Margin="0, 0, 0, 15" 
+                   HorizontalAlignment="Center" />
+        
+        <TextBlock Text="{Binding ErrorMessage}"
+                   Foreground="Red"
+                   Margin="0,5,0,20"
+                   HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal" Spacing="15"
+                    HorizontalAlignment="Center">
+            
+            <TextBox Text="{Binding Hour}" Width="50"
+                     Classes="timeInput" />
+            <TextBlock Text="h" VerticalAlignment="Center" Foreground="#F0F0F0" />
+
+            <TextBox Text="{Binding Minute}" Width="50" Classes="timeInput" />
+            <TextBlock Text="m" VerticalAlignment="Center" Foreground="#F0F0F0" />
+
+            <TextBox Text="{Binding Second}" Width="50" Classes="timeInput" />
+            <TextBlock Text="s" VerticalAlignment="Center" Foreground="#F0F0F0" />
+
+            <Button Content="ADD" 
+                    Command="{Binding AddTimeCommand}" 
+                    Background="#62FFC2" 
+                    Foreground="#1E1E2C" 
+                    FontWeight="Bold" />
+
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Margin="0, 30, 0, 0"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Button Content="CLEAR" Command="{Binding ClearCommand}"
+                    Background="#3D3D52" 
+                    Foreground="#F0F0F0" 
+                    HorizontalAlignment="Center" 
+                    Margin="0, 0, 0, 15" />
+
+            <TextBlock Text="Recent Entries:" Foreground="#A0A0A0" Margin="0,10,0,5" />
+
+            <ListBox
+                x:Name="entries"
+                ItemsSource="{Binding AddedEntries}"
+                Height="300"
+                Width="350"
+                Background="#2D2D3E" 
+                BorderBrush="#62FFC2" 
+                BorderThickness="1" 
+                CornerRadius="5">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, Auto" x:DataType="m:TimeEntry">
+
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding DisplayValue}"
+                                       VerticalAlignment="Center"
+                                       Foreground="#F0F0F0"
+                                       FontSize="16" />
+
+                            <Button Grid.Column="1"
+                                    Content="X"
+                                    Classes="utilityButton"
+                                    Width="25"
+                                    Height="25"
+                                    VerticalAlignment="Center"
+                                    Margin="10,0,0,0"
+                                    
+                                    Command="{Binding #Root.((vm:MainWindowViewModel)DataContext).RemoveEntryCommand}"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

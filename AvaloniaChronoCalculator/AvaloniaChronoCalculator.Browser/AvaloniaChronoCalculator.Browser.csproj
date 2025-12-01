@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+    <PropertyGroup>
+        <TargetFramework>net9.0-browser</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
+        <BlazorWasmHttpCache>false</BlazorWasmHttpCache>
+        <ServiceWorkerAssetsManifestCanHash>false</ServiceWorkerAssetsManifestCanHash>
+        <DisableScopedCssBundling>true</DisableScopedCssBundling>
+        <ExcludeAssetsFromPublish>$(ExcludeAssetsFromPublish);Content;Runtime;wwwroot</ExcludeAssetsFromPublish>
+        <SuppressWasmAssembliesHash>true</SuppressWasmAssembliesHash>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Browser"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AvaloniaChronoCalculator\AvaloniaChronoCalculator.csproj"/>
+    </ItemGroup>
+</Project>
