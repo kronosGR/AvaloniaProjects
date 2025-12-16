@@ -6,3 +6,4 @@ Simple app created with the amazing AvaloniaUI framework using C# and WPF
 - C#
 
 ![ChronoCalculator](avaloniaChronoCalculator.jpeg)
+

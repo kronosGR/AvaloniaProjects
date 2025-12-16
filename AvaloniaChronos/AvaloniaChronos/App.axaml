@@ -1,0 +1,51 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:AvaloniaChronos"
+             x:Class="AvaloniaChronos.App"
+             RequestedThemeVariant="Dark">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentTheme.xaml"/>
+        
+        <Style Selector="TabItem TextBlock">
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+        
+        <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="White"/> 
+        </Style>
+        
+       
+        <Style Selector="Button.CircularButton">
+            <Setter Property="CornerRadius" Value="45"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="90"></Setter>
+            <Setter Property="Height" Value="90"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="Background" Value="#3d3d3d"></Setter>
+            <Setter Property="Foreground" Value="white"></Setter>
+        </Style>
+        
+        <Style Selector="Button.PrimaryButton">
+            <Setter Property="Background" Value="#007acc"></Setter>
+        </Style>
+        
+        <Style Selector="TextBlock.h1">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Margin" Value="0,0,0,20"></Setter>
+        </Style>
+        
+        <Style Selector="NumericUpDown, TextBox">
+            <Setter Property="Background" Value="#1A1A1A"/>
+            <Setter Property="BorderBrush" Value="#4A4A4A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8"/>
+        </Style>
+    </Application.Styles>
+</Application>

@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaChronos.ViewModels"
+             xmlns:v="using:AvaloniaChronos.Views"
+             xmlns:models="clr-namespace:AvaloniaChronos.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaChronos.Views.MainView"
+             
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+    
+    <Grid RowDefinitions=" *">
+      <TabControl Grid.Row="0"
+                  Margin="10"
+                  Background="Transparent"
+                  BorderThickness="0"
+                  ItemsSource="{Binding Tabs}"
+                  SelectedItem="{Binding  SelectedTab}">
+          <TabControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:ViewModelBase">
+                  <TextBlock Text="{Binding Header}"
+                             Foreground="White"
+                             FontSize="16"
+                             FontWeight="Bold"
+                             Margin="10,5"></TextBlock>
+              </DataTemplate>
+          </TabControl.ItemTemplate>
+          <TabControl.ContentTemplate>
+              <DataTemplate>
+                  <ContentControl Content="{Binding}"></ContentControl>
+              </DataTemplate>
+          </TabControl.ContentTemplate>
+      </TabControl>
+  </Grid>
+</UserControl>
